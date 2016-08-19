@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      height: 2500px;
+      margin: 0;
+    }
+    div {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100px;
+      height: 100px;
+      background: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var oBox = document.getElementById('box');
+  window.onscroll = function () {
+    var s = document.body.scrollTop;
+    console.log(s);
+    var a = oBox.offsetHeight - oBox.offsetTop;
+    console.log(a);
+    if (s >= 300){
+      oBox.style.display = 'block';
+      oBox.style.top = (647 + s)+'px';
+    }else {
+      oBox.style.display = 'none';
+    }
+  };
+  var timer = null;
+  oBox.onclick = function() {
+    timer = setInterval(function () {
+      var osTop = document.body.scrollTop;
+      document.body.scrollTop -= 50;
+      if (osTop === 0){
+        clearInterval(timer);
+      }
+    },30)
+  }
+
+</script>
+</body>
+</html>
