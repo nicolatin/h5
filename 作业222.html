@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>作业2</title>
+  <style>
+    .box {
+      overflow: hidden;
+    }
+    li {
+      float: left;
+      list-style: none;
+      margin-right: 20px;
+      padding: 4px 6px;
+    }
+    li:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .active {
+      background: #f90;
+      color: #fff;
+    }
+    li.active:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<h3>某公司招聘信息板</h3>
+<div id='post' class="box">
+  <h4>职位</h4>
+  <ul>
+    <li>前端开发</li>
+    <li>后端开发</li>
+    <li>产品经理</li>
+  </ul>
+</div>
+
+<div id='money' class="box">
+  <h4>薪水</h4>
+  <ul>
+    <li>3000~4000</li>
+    <li>4000~6000</li>
+    <li>6000~10000</li>
+  </ul>
+</div>
+<div id='place' class="box">
+  <h4>地点</h4>
+  <ul>
+    <li>北京</li>
+    <li>上海</li>
+    <li>杭州</li>
+    <li>深圳</li>
+  </ul>
+</div>
+<p id='txt'>你选择的搜索条件是:</p>
+
+<script type="text/javascript">
+var aLi = document.getElementsByTagName('li');
+  var oPost = document.getElementById('post');
+  var oMoney = document.getElementById('money');
+  var oPlace = document.getElementById('place');
+  var oTxt = document.getElementById('txt');
+
+  qwe(oPost);
+  qwe(oMoney);
+  qwe(oPlace);
+
+  function qwe(obj) {
+    var aLi = obj.getElementsByTagName('li');
+
+    for (var i = 0; i < aLi.length; i ++){
+      var iNew = aLi[0];
+      aLi[i].onclick = function(){
+        iNew.className = '';
+        this.className = 'active';
+        iNew = this;
+        // oTxt.innerHTML += this.innerHTML;
+        var oSpan = document.createElement('span');
+        oSpan.innerHTML = this.innerHTML;
+        oTxt.appendChild('oSpan');
+
+        
+
+      }
+    }
+  }
+
+
+
+
+  // for (var i = 0; i < aLi.length; i ++){
+  //   var iNew = aLi[0];
+  //   aLi[i].onclick = function(){
+  //     iNew.className = '';
+  //     this.className = 'active';
+  //     iNew = this;
+  //     // oTxt.innerHTML += this.innerHTML;
+  //   }
+  // }
+    var arr = [];
+
+  function wer() {
+
+  for(var i = 0; i < aLi.length; i ++){
+    if(aLi[i].className == 'active'){
+      // oTxt.innerHTML += ' '+aLi[i].innerHTML;
+      arr.push(aLi[i].innerHTML);
+    }else{
+      arr.splice(arr.indexOf(aLi[i]).innerHTML,1)
+    }
+
+  }
+  console.log(arr);
+}
+</script>
+</body>
+</html>
